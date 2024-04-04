@@ -56,9 +56,8 @@ const handleWantsBeCreator = () => {
         </HeaderLoader>
       </template>
       <template #content>
-        <Splash :loading="loading">
-          <slot />
-        </Splash>
+        <Splash :loading="loading" />
+        <slot />
       </template>
     </MainContent>
   </div>

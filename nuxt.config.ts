@@ -4,12 +4,27 @@ import path from 'path'
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  modules: ['nuxt-primevue', '@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', '@nuxtjs/supabase', '@nuxtjs/color-mode'],
+  modules: [
+    'nuxt-primevue',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/supabase',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/seo',
+  ],
 
   css: ['primeicons/primeicons.css'],
 
   imports: {
     dirs: ['./composables/useMarkdown', './composables/useServices', './composables/useLogger'],
+  },
+
+  site: {
+    url: process.env.SITE_URL,
+  },
+
+  ogImage: {
+    fonts: ['Inter:400', 'Inter:700'],
   },
 
   supabase: {
@@ -42,3 +57,4 @@ export default defineNuxtConfig({
     },
   },
 })
+
