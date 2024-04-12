@@ -8,14 +8,22 @@ import GistCardItem from '@/modules/gists/components/Card/Item/Item.vue'
 import { myselfKey } from '@/modules/users/composables/useMyself/useMyself'
 import type { MyselfContextProvider } from '@/modules/users/composables/useMyself/types'
 
+import PaymentSetupAlert from '@/modules/payments/components/PaymentSetupAlert/PaymentSetupAlert.vue'
+
 import { useGistsReport } from '@/modules/reports/composables/useGistsReport/useGistsReport'
 import { useGistList } from '@/modules/gists/composables/useGistList/useGistList'
+
+import { useStripeAccountCreate } from '@/modules/payments/composables/useStripeAccountCreate/useStripeAccountCreate'
+import { useStripeAccountValidate } from '@/modules/payments/composables/useStripeAccountValidate/useStripeAccountValidate'
 
 import { useScroll } from '@vueuse/core'
 
 const route = useRoute()
 const router = useRouter()
 const { user } = inject(myselfKey) as MyselfContextProvider
+
+const { loading: paymentCreateLoading, create } = useStripeAccountCreate()
+const { isValid, validate } = useStripeAccountValidate()
 
 const {
   loading: reportLoading,
@@ -51,9 +59,25 @@ const handleNavigateToDetail = (id: string) => {
   const { username } = route.params
   router.push(`/${username}/gist/${id}`)
 }
+
+const handlePaymentSetup = async () => {
+  const response = await create(user.value?.email!)
+
+  if (!response) {
+    return
+  }
+
+  window.location.href = response.onboardingUrl
+}
+
+onMounted(() => {
+  validate(user.value?.paymentConnectedAccount)
+})
 </script>
 
 <template>
+  <PaymentSetupAlert @setup="handlePaymentSetup" v-if="!isValid" :loading="paymentCreateLoading" />
+
   <WidgetGroup>
     <WidgetGroupLoader :loading="reportLoading" :amount="3">
       <WidgetCondensed :value="totalGists" label="Gists do total" />

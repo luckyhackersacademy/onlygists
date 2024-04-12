@@ -11,6 +11,8 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@nuxtjs/color-mode',
     '@nuxtjs/seo',
+    '@vue-email/nuxt',
+    '@unlok-co/nuxt-stripe',
   ],
 
   css: ['primeicons/primeicons.css'],
@@ -27,11 +29,25 @@ export default defineNuxtConfig({
     fonts: ['Inter:400', 'Inter:700'],
   },
 
+  stripe: {
+    client: {
+      key: process.env.STRIPE_CLIENT_KEY,
+    },
+
+    server: {
+      key: process.env.STRIPE_SECRET_KEY,
+    },
+  },
+
   supabase: {
     redirect: false,
   },
 
   runtimeConfig: {
+    stripeProudctId5BRL: process.env.STRIPE_PRODUCT_ID_5BRL,
+    stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
+    resendKey: process.env.RESEND_KEY,
+
     public: {
       nodeEnv: process.env.NODE_ENV,
       supabaseUrl: process.env.SUPABASE_URL,
@@ -57,4 +73,3 @@ export default defineNuxtConfig({
     },
   },
 })
-

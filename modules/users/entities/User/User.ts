@@ -5,9 +5,11 @@ export interface User {
   avatarUrl: string
   username: string
   name: string
+  email: string
   site?: string
   bio?: string
   phone?: string
   address?: Address
   createdAt: Date
+  paymentConnectedAccount: string
 }

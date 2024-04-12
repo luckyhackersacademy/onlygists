@@ -42,7 +42,6 @@ export interface Database {
           id: string
           is_paid: boolean
           lang: string
-          payment_connected_account: string | null
           price: number
           profile_id: string | null
           title: string
@@ -54,7 +53,6 @@ export interface Database {
           id: string
           is_paid: boolean
           lang: string
-          payment_connected_account?: string | null
           price: number
           profile_id?: string | null
           title: string
@@ -66,7 +64,6 @@ export interface Database {
           id?: string
           is_paid?: boolean
           lang?: string
-          payment_connected_account?: string | null
           price?: number
           profile_id?: string | null
           title?: string
@@ -90,6 +87,7 @@ export interface Database {
           email: string
           id: string
           name: string
+          payment_connected_account: string | null
           phone: string | null
           site: string | null
           username: string
@@ -102,6 +100,7 @@ export interface Database {
           email: string
           id: string
           name: string
+          payment_connected_account?: string | null
           phone?: string | null
           site?: string | null
           username: string
@@ -114,6 +113,7 @@ export interface Database {
           email?: string
           id?: string
           name?: string
+          payment_connected_account?: string | null
           phone?: string | null
           site?: string | null
           username?: string
