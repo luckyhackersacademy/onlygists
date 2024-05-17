@@ -1,75 +1,26 @@
-# Nuxt 3 Minimal Starter
+## `onlygists`
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Share and monetize code snippets. Earn extra income with the codes you make on a daily basis.  
+This is the source code to my course called: [`NuxtExtreme`](https://luckyhackers.academy/course/nuxt-extreme)
 
-## Setup
+### Setup
 
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
+```sh
+# instal deps
 yarn install
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
+# run local
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+### Test payments locally
 
-Build the application for production:
+You'll need to install [stripe-cli](https://docs.stripe.com/stripe-cli/overview) and run
 
-```bash
-# npm
-npm run build
+```sh
+# to authenticate with your account
+stripe login
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+# to bypass events to your local machine
+stripe listen --forward-to localhost:3000/api/webhooks/payment
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
