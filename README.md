@@ -5,6 +5,8 @@ This is the source code to my course called: [`NuxtExtreme`](https://luckyhacker
 
 ### Setup
 
+First things first, rename `.env.example` to `.env` and put your keys
+
 ```sh
 # instal deps
 yarn install
